@@ -81,11 +81,11 @@ paths:
                           valid_until: 2022-07-08T13:44:54.101Z
                       network_participant: [
                         {
-                        subscriber_url: /bapl,
-                        domain: nic2004:52110,
-                        type: buyerApp,
-                        msn: false,
-                        city_code: ["std:080"]
+                          subscriber_url: /bapl,
+                          domain: "nic2004:52110",
+                          type: buyerApp,
+                          msn: false,
+                          city_code: ["std:080"]
                         }
                       ]
                       
@@ -101,7 +101,7 @@ paths:
                         gst: 
                           legal_entity_name: ABC Incorporates
                           business_address: Trade World, Mansarpur, Coorg, Karnataka 333333
-                          city_code: [std:080]
+                          city_code: ["std:080"]
                           gst_no: 07AAACN2082N4Z7
                         pan: 
                           name_as_per_pan: ABC Incorporates
@@ -123,7 +123,7 @@ paths:
                       network_participant: [
                         {
                         subscriber_url: /bapl,
-                        domain: nic2004:52110,
+                        domain: "nic2004:52110",
                         type: sellerApp,
                         msn: false,
                         city_code: ["std:080"]
@@ -174,8 +174,8 @@ paths:
                           {
                             signing_public_key: QSax2KT4UiTUWUqoVUaEcWhBcGTTNu+Sf8EMDRY1GaE=,
                             encryption_public_key: O74ukMymk4KZnVs3sZhU2U7RXpaZ/qiOUMk5NWt6rbI=,
-                            valid_from: 2022-07-08T13:44:54.101Z,
-                            valid_until: 2022-07-08T13:44:54.101Z
+                            valid_from: "2022-07-08T13:44:54.101Z",
+                            valid_until: "2022-07-08T13:44:54.101Z"
                           },
                           city_code: ["std:080"] 
                           }
@@ -193,7 +193,7 @@ paths:
                         gst: 
                           legal_entity_name: ABC Incorporates
                           business_address: Trade World, Mansarpur, Coorg, Karnataka 333333
-                          city_code: [std:080]
+                          city_code: ["std:080"]
                           gst_no: 07AAACN2082N4Z7
                         pan: 
                           name_as_per_pan: ABC Incorporates
@@ -216,14 +216,14 @@ paths:
                           [
                             {
                             subscriber_url: /buyerAppl,  
-                            domain: nic2004:52110,
+                            domain: "nic2004:52110",
                             type: buyerApp,
                             msn: false,
                             city_code: ["std:080"]
                             },
                             {
                             subscriber_url: /sellerAppl,  
-                            domain: nic2004:52110,
+                            domain: "nic2004:52110",
                             type: sellerApp,
                             msn: false,
                             city_code: ["std:080"]
@@ -242,7 +242,7 @@ paths:
                         gst: 
                           legal_entity_name: ABC Incorporates
                           business_address: Trade World, Mansarpur, Coorg, Karnataka 333333
-                          city_code: [std:080]
+                          city_code: ["std:080"]
                           gst_no: 07AAACN2082N4Z7
                         pan: 
                           name_as_per_pan: ABC Incorporates
@@ -264,14 +264,14 @@ paths:
                       network_participant: [
                         {
                           subscriber_url: /buyerApp1,
-                          domain: nic2004:52110,
+                          domain: "nic2004:52110",
                           type: buyerApp,
                           msn: false,
                           city_code: ["std:080"]
                         },
                         {
                           subscriber_url: /sellerApp1,  
-                          domain: nic2004:52110,
+                          domain: "nic2004:52110",
                           type: sellerApp,
                           msn: true,
                           city_code: ["std:080"],
@@ -281,8 +281,8 @@ paths:
                             key_pair: {
                               signing_public_key: QSax2KT4UiTUWUqoVUaEcWhBcGTTNu+Sf8EMDRY1GaE=,
                               encryption_public_key: O74ukMymk4KZnVs3sZhU2U7RXpaZ/qiOUMk5NWt6rbI=,
-                              valid_from: 2022-07-08T13:44:54.101Z,
-                              valid_until: 2022-07-08T13:44:54.101Z
+                              valid_from: "2022-07-08T13:44:54.101Z",
+                              valid_until: "2022-07-08T13:44:54.101Z"
                             },
                             city_code: ["std:080"]
                             }
@@ -350,129 +350,309 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  sender_subscriber_id:  
-                    type: string  
-                    description: A unique ID describing a subscriber on a network.
-                    example: "abc.com"
-                  request_id:
-                    type: string  
-                    description: A unique ID describing request ID.
-                    example: "4995c9a1-fc57-472d-9736-4e8a9ed1810f"
-                  timestamp:
-                    type: string
-                    format: date-time
-                    example: 2022-07-07T02:52:29.001Z
-                  search_parameters:
-                    type: object
-                    properties:
-                      country:
-                        type: string
-                        description: country
-                        example: IND
-                      domain:
-                        type: string  
-                        description: Industry domain of the subscriber
-                        example: "nic2004:52110"
-                      type:
-                        type: string
-                        description: buyerApp | sellerApp | gateway
-                        example: "buyerApp"
-                      city:
-                        type: string
-                        description: City code
-                        example: "std:080"
-                      subscriber_id:  
-                        type: string  
-                        description: A unique ID describing a subscriber on a network.
-                        example: "abc.com"
-                      
-                      
-                      
-                  signature:
-                    type: string
-                    format: byte
-                    description: >
-                      Sign complete search_parameters json object using sign_private_key. <br> sign(country|domain|type|city|subscribeId) => sign(IND|nic2004:52110|sellerApp|std:083|fossgentechnologies.com) <br>
-                      This will be verified using signature public key configured at ONDC registry
-                    example: EoraSMAdJBJGxXjI/KgGhst4d6y1Vu2M6Z938/qAuJBV8hC9RUhNtwU+yL/pJeKGnxFgWxcW3FwlpTJCbSGdAA==
-                required:
-                    - request_id 
-                    - sender_subscriber_id
-                    - timestamp
-                    - signature
-                    - search_parameters
+                  type: object
+                  required:
+                  - subscriber_id
+                  - country
+                  - city
+                  - domain
+                  - type
+                  properties:
+                    subscriber_id:  
+                      type: string  
+                      description: A unique ID describing a subscriber on a network.
+                    country:  
+                      type: string  
+                      description: Country code as per ISO 3166-1 and ISO 3166-2 format
+                    ukid:  
+                      type: string  
+                      description: A unique ID describing a subscriber on a network. 
+                    city:
+                      type: string
+                      format: string
+                      description: City code
+                      example: "std:080"
+                    domain:
+                      type: string
+                      format: string
+                      description: Industry domain of the subscriber. 
+                      example: nic2004:52110
+                    type:
+                      type: string
+                      format: string
+                      description: buyerApp or sellerApp 
+                      example: "sellerApp"
         responses:
           '200':
             description: Acknowledgement of message received
             content:
               application/json:
                 schema:
-                  type: object
-                  properties:
-                    subscriber_id:
-                      type: string  
-                      description: A unique ID describing a subscriber on a network.
-                      example: abc.com
-                    unique_key_id:
-                      type: string  
-                      description: A unique ID describing key pair of a subscriber.
-                      example: 27baa06d-f90a-486c-85e5-cc621b787f04  
-                    country:
-                      type: string  
-                      description: Country code as per ISO 3166-1 and ISO 3166-2 format
-                      example: "IND"
-                    city_code:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/City'
-                    domain:
-                      type: string  
-                      description: Industry domain of the subscriber
-                      example: "nic2004:52110"
-                    type:
-                      type: string
-                      description: buyerApp | sellerApp | gateway
-                      example: sellerApp
-                    msn:
-                      type: string
-                      description: true | false
-                      example: true
-                    signing_public_key:
-                      type: string  
-                      format: byte 
-                      description: Public key used by the subscriber to sign every request it makes
-                      example: QSax2KT4UiTUWUqoVUaEcWhBcGTTNu+Sf8EMDRY1GaE=
-                    encr_public_key:
-                      type: string  
-                      format: byte
-                      description: Encryption public key of the subscriber
-                      example: O74ukMymk4KZnVs3sZhU2U7RXpaZ/qiOUMk5NWt6rbI=
-                    valid_from:
-                      type: string 
-                      format: date-time  
-                      description: Keys valid from
-                      example: 2022-07-07T02:52:29.001Z
-                    valid_until:
-                      type: string 
-                      format: date-time  
-                      description: Keys valid until
-                      example: 2022-07-07T02:52:29.001Z
-                    created:  
-                      type: string
-                      format: date-time
-                      description: Created timestamp
-                      example: 2022-07-07T02:52:29.001Z
-                    updated:
-                      type: string
-                      format: date-time
-                      description: Updated timestamp
-                      example: 2022-07-07T02:52:29.001Z
-                    network_participant:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/NetworkParticipant'
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                          subscriber_id:
+                            type: string
+                            format: string
+                            description: A unique ID describing a subscriber on a network.
+                            example: "https://sit.grab.in/ondc"
+                          ukid:
+                            type: string
+                            format: string
+                            description: UUID.
+                            example: "22a8a67a-76d9-459b-867c-085dda2939ec"
+                          br_id:
+                            type: string
+                            format: string
+                            description: UUID.
+                            example: "22a8a67a-76d9-459b-867c-085dda2939ec"
+                          country:
+                            type: string
+                            format: string
+                            description: Country code
+                            example: "IND"
+                          city:
+                            type: string
+                            format: string
+                            description: City code
+                            example: "std:080"
+                          domain:
+                            type: string
+                            format: string
+                            description: Industry domain of the subscriber. 
+                            example: nic2004:52110
+                          signing_public_key:
+                            type: string
+                            description: Signing Public Key 
+                            example: QSax2KT4UiTUWUqoVUaEcWhBcGTTNu+Sf8EMDRY1GaE=
+                          encr_public_key:
+                            type: string
+                            description: Encryption Public Key 
+                            example: O74ukMymk4KZnVs3sZhU2U7RXpaZ/qiOUMk5NWt6rbI=
+                          valid_from:
+                            type: string
+                            format: string ($date-time)
+                            example: "2022-04-05T05:56:52.470618Z3"
+                            description: Keys valid from
+                          valid_until:
+                            type: string
+                            format: string ($date-time)
+                            example: "2026-04-05T05:56:52.470618Z7"
+                            description: Keys valid until
+                          created:
+                            type: string
+                            format: string ($date-time)
+                            example: "2026-04-05T05:56:52.470618Z7"
+                            description: Created timestamp
+                          updated:  
+                            type: string
+                            format: string ($date-time)
+                            example: "2026-04-05T05:56:52.470618Z7"
+                            description: Updated timestamp
+
+  /vlookup:
+    post:
+      summary: Get public keys of network participants
+      description: The network participant will trigger the lookup call to the registry to fetch its public keys.
+      requestBody:
+         description: vlookup
+         content:
+            application/json:
+              schema:
+                    type: object
+                    required:
+                      - sender_subscriber_id
+                      - request_id
+                      - timestamp
+                      - signature
+                      - search_parameters
+                      - country
+                      - domain
+                    properties:
+                        sender_subscriber_id:  
+                          type: string  
+                          description: A unique ID describing a subscriber on a network. 
+                        request_id:  
+                          type: string  
+                          description: Country code as per ISO 3166-1 and ISO 3166-2 format
+                        timestamp:
+                          type: string
+                          format: date-time
+                          description: request timestamp to avoid replay attack
+                          example: '2016-08-29T09:12:33.001Z'
+                        search_parameters:
+                          type: object
+                          properties:
+                            country:
+                              type: string
+                              format: string
+                              description: Country code
+                              example: "IND"
+                            domain:
+                              type: string
+                              format: string
+                              description: Industry domain of the subscriber. 
+                              example: nic2004:52110
+                            type:
+                              type: string
+                              format: string
+                              description: buyerApp or sellerApp. 
+                              example: "sellerApp or byerApp"
+                            city:
+                              type: string
+                              format: string
+                              description: City code. 
+                              example: "std:080"
+                            subscriber_id:
+                              type: string
+                              format: string
+                              description: subscriber id.
+                              example: "sit.grab.in/ondc"
+                        signature:
+                          type: string
+                          format: string
+                          description: signature 
+                          example: Y8Q8yyVI4zCrsCX3e1WlKfJL8Vd7GRBjUoITIH1ISVmDfwxRfJ3xgLu0Pfw4seKRTaGuOdyxDFdVspJckdPFAA==      
+   
+      responses:
+        "200":
+          description: VLookup received
+          content:
+              application/json:
+                schema:
+                   type: array
+                   items:
+                     type: object
+                     properties:
+                          subscriber_id:
+                            type: string
+                            format: string
+                            description: A unique ID describing a subscriber on a network.
+                            example: "pilot-gateway-1.beckn.nsdl.co.in/option1"
+                          country:
+                            type: string
+                            format: string
+                            description: Country code
+                            example: "IND"
+                          city:
+                            type: string
+                            format: string
+                            description: City code
+                            example: "std:080"
+                          signing_public_key:
+                            type: string
+                            description: Signing Public Key 
+                            example: QSax2KT4UiTUWUqoVUaEcWhBcGTTNu+Sf8EMDRY1GaE=
+                          encr_public_key:
+                            type: string
+                            description: Encryption Public Key 
+                            example: O74ukMymk4KZnVs3sZhU2U7RXpaZ/qiOUMk5NWt6rbI=
+                          valid_from:
+                            type: string
+                            format: string ($date-time)
+                            example: "2022-04-05T05:56:52.470618Z3"
+                            description: Keys valid from
+                          valid_until:
+                            type: string
+                            format: string ($date-time)
+                            example: "2026-04-05T05:56:52.470618Z7"
+                            description: Keys valid until
+                          created:
+                            type: string
+                            format: string ($date-time)
+                            example: "2026-04-05T05:56:52.470618Z7"
+                            description: Created timestamp
+                          updated:  
+                            type: string
+                            format: string ($date-time)
+                            example: "2026-04-05T05:56:52.470618Z7"
+                            description: Updated timestamp
+                          unique_key_id:
+                            type: string
+                            format: string
+                            example: "dba638cc-20cc-40ea-a08b-b4a39bfb3eab"
+                            description: Unique key of subcriber
+                          network_participant:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                subscriber_url:
+                                  type: string
+                                  format: string
+                                  description: URL to be verified and configured for network participation.The given URL should have valid SSL Certificate that should be able to pass OCSP check. https://certificatetools.com/ocsp-checker can be used to check prior to submitting the request.
+                                  example: "/test4"
+                                domain:
+                                  type: string
+                                  format: string
+                                  description: Industry domain of the subscriber. 
+                                  example: nic2004:52110
+                                type:
+                                  type: string
+                                  format: string
+                                  description: buyerApp or sellerApp 
+                                  example: "sellerApp"
+                                msn:
+                                   type: boolean
+                                   description: true or false 
+                                   example: true
+                                city_code:
+                                   type: string
+                                   format: string
+                                   description: City code
+                                   example: "std:080"
+                                seller_on_record:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                       unique_key_id:
+                                          type: string
+                                          format: string (UUID)
+                                          example: "22a8a67a-76d9-459b-867c-085dda2939ec"
+                                          description: UUID
+                                       city_code:
+                                           type: string
+                                           format: string
+                                           description: City code
+                                           example: "std:080"
+                                       key_pair: 
+                                          type: object
+                                          properties: 
+                                            signing_public_key:
+                                                type: string
+                                                description: Signing Public Key 
+                                                example: QSax2KT4UiTUWUqoVUaEcWhBcGTTNu+Sf8EMDRY1GaE=
+                                            encr_public_key:
+                                              type: string
+                                              description: Encryption Public Key 
+                                              example: O74ukMymk4KZnVs3sZhU2U7RXpaZ/qiOUMk5NWt6rbI=
+                                            valid_from:
+                                              type: string
+                                              format: string ($date-time)
+                                              example: "2022-04-05T05:56:52.470618Z3"
+                                              description: Keys valid from
+                                            valid_until:
+                                              type: string
+                                              format: string ($date-time)
+                                              example: "2026-04-05T05:56:52.470618Z7"
+                                              description: Keys valid until
+        "500":
+          description: "Server Side Error. Call Helpdesk for details."
+        "401":
+          description: "Unauthorized Access: invalid signature."
+        "416":
+          description: "Atleast two search parameters is required."
+        "412":
+          description: "sender subscriber id is invalid."
+        "411":
+          description: "timestamp is invalid."
+
+      tags:
+          - Key rotation of network participant - buyerApp or sellerApp
+
+
 components:
   schemas:
     Ack:
